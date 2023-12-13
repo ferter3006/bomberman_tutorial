@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcgdlrstr30w"]
+
+[ext_resource type="Script" path="res://Autoloads/Audios.gd" id="1_n1k27"]
+[ext_resource type="AudioStream" uid="uid://bjmsow3r1jtku" path="res://Assets/Sounds_bomberman/kim-lightyear-leave-the-world-tonight-chiptune-edit-loop-132102.mp3" id="1_n4kw7"]
+[ext_resource type="AudioStream" uid="uid://b7xsrkphxdr2p" path="res://Assets/Sounds_bomberman/bomb.mp3" id="3_6rx18"]
+[ext_resource type="AudioStream" uid="uid://dwardi5ot2ej2" path="res://Assets/Sounds_bomberman/click.ogg" id="4_tfiol"]
+
+[node name="Audios" type="Node2D"]
+script = ExtResource("1_n1k27")
+
+[node name="Background" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_n4kw7")
+autoplay = true
+bus = &"Background"
+
+[node name="Bomb" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6rx18")
+bus = &"Effects"
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tfiol")
+bus = &"Effects"

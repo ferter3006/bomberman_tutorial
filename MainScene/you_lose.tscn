@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://bh31berlwa5jx"]
+
+[ext_resource type="Script" path="res://MainScene/you_lose.gd" id="1_rfx3b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d73x8"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_yvqbe"]
+font_size = 14
+
+[sub_resource type="Animation" id="Animation_ew8ms"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/Info:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vpru2"]
+resource_name = "regular"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.705882)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/Info:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uwpjv"]
+_data = {
+"RESET": SubResource("Animation_ew8ms"),
+"regular": SubResource("Animation_vpru2")
+}
+
+[node name="YouLose" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_rfx3b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 576.0
+offset_bottom = 320.0
+color = Color(0, 0, 0, 0)
+
+[node name="Info" type="Node2D" parent="ColorRect"]
+visible = false
+
+[node name="Label" type="Label" parent="ColorRect/Info"]
+offset_top = 80.0
+offset_right = 576.0
+offset_bottom = 117.0
+text = "YOU LOSE"
+label_settings = SubResource("LabelSettings_d73x8")
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="ColorRect/Info"]
+offset_left = 240.0
+offset_top = 144.0
+offset_right = 336.0
+offset_bottom = 192.0
+text = "BACK"
+
+[node name="Score" type="Label" parent="ColorRect/Info"]
+offset_top = 112.0
+offset_right = 576.0
+offset_bottom = 135.0
+text = "Score: 54320"
+label_settings = SubResource("LabelSettings_yvqbe")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "regular"
+libraries = {
+"": SubResource("AnimationLibrary_uwpjv")
+}
+
+[connection signal="pressed" from="ColorRect/Info/BackButton" to="." method="_on_back_button_pressed"]

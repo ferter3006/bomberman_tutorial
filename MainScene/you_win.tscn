@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://fme2v0aodx1m"]
+
+[ext_resource type="PackedScene" uid="uid://bcny8yb2b31m8" path="res://Logo/logo.tscn" id="1_p3seo"]
+[ext_resource type="Script" path="res://MainScene/you_win.gd" id="1_vsiot"]
+
+[node name="YouWin" type="Node2D"]
+script = ExtResource("1_vsiot")
+
+[node name="Logo" parent="." instance=ExtResource("1_p3seo")]
+offset_left = 224.0
+offset_top = 72.0
+offset_right = 336.0
+offset_bottom = 120.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 184.0
+offset_top = 136.0
+offset_right = 368.0
+offset_bottom = 192.0
+text = "Thanks for playing
+This is only a Demo"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="."]
+offset_left = 224.0
+offset_top = 208.0
+offset_right = 328.0
+offset_bottom = 248.0
+text = "BACK"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcny8yb2b31m8"]
+
+[ext_resource type="Texture2D" uid="uid://cjej6t0h7nqwi" path="res://Assets/MainCharacter/minerman-death-front.png" id="1_u4xxy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jrnma"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="Logo" type="ColorRect"]
+offset_right = 112.0
+offset_bottom = 48.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 112.0
+offset_bottom = 26.0
+text = "BOMBERMAN"
+label_settings = SubResource("LabelSettings_jrnma")
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(54, 25)
+scale = Vector2(2.25, 1.83333)
+texture = ExtResource("1_u4xxy")
+region_enabled = true
+region_rect = Rect2(128, 8, 32, 24)
